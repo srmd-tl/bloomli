@@ -48,6 +48,8 @@
                         </ul>
                         <div class="tab-content" id="bloomli-tabContent">
                             <div class="tab-pane fade show active" id="bloomli-login" role="tabpanel" aria-labelledby="bloomli-login-tab">
+                                <!-- Validation Errors -->
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
                                 <!-- login section start  -->
                                 <div class="bloomli-login-section p-77">
                                     <h3>Hey, enter your details to get sign in to your account</h3>
@@ -57,7 +59,7 @@
                                             <input type="text" class="form-control" name="email" placeholder="Enter Email / Phone No" />
                                         </div>
                                         <div class="form-list">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Passcode" />
+                                            <input type="password" class="form-control" id="pa``                                                                                                                                                                    ssword" name="password" placeholder="Passcode" />
                                             <span id="pass-show"><img src="assets/images/icons/passcode.png" alt="show passcode" /></span>
                                         </div>
                                         <div class="form-list"><input type="submit" class="btn btn-submit" name="submit" value="Login" /></div>
@@ -75,6 +77,8 @@
                                 <!-- login section ends  -->
                             </div>
                             <div class="tab-pane fade" id="bloomli-account" role="tabpanel" aria-labelledby="bloomli-account-tab">
+                                <!-- Validation Errors -->
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
                                 <div class="bloomli-create-account p-77">
                                     <form action="{{ route('register') }}" method="POST">
                                         @csrf
