@@ -15,6 +15,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            //gh attributes
+            $table->string('github_id')->nullable();
+            $table->string('github_token')->nullable();
+            $table->string('github_refresh_token')->nullable();
+
+            //linkedin attributes
+            $table->string('google_id')->nullable();
+            $table->string('google_token')->nullable();
+            $table->string('google_refresh_token')->nullable();
+
+            //linkedin attributes
+            $table->string('linkedin_id')->nullable();
+            $table->string('linkedin_token')->nullable();
+            $table->string('linkedin_refresh_token')->nullable();
+
             $table->string('first_name');
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
