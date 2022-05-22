@@ -82,13 +82,13 @@
                                                                                        alt="missing"></label>
                         <input type="file" id="file-upload">
 
-                        <img class="user-image" src="{{asset('my-assets/images/user-image.png')}}" alt="missing">
+                        <img class="user-image" src="{{auth()->user()->profile_img}}" alt="missing">
                     </form>
                 </div>
                 <div class="user-info-box">
-                    <h1 class="h1">John Viky</h1>
-                    <p class="email-id">Jaclyn87@gmail.com</p>
-                    <h2 class="h2 designation">UI/UX Designer</h2>
+                    <h1 class="h1">{{auth()->user()->first_name}}</h1>
+                    <p class="email-id">{{auth()->user()->email}}</p>
+                    <h2 class="h2 designation">{{auth()->user()->position}}</h2>
                     <div class="user-action-group">
                         <button class="action-icon thumbs-up"> <img class="action-img" src="{{asset('my-assets/icons/like.svg')}}"
                                                                     alt="missing"></button>

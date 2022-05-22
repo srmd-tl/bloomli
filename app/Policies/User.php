@@ -19,8 +19,8 @@ class User
         //
     }
 
-    public function update($id, UserModel $user): bool
+    public function update(UserModel $userModel ,UserModel $user): bool
     {
-        return $user->id === $id;
+        return $user->id === $userModel->id;
     }
 }

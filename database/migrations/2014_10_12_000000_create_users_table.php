@@ -33,10 +33,12 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
-            $table->string('contact');
-            $table->string('address');
-            $table->string('dob');
-            $table->string('gender');
+            $table->string('contact')->nullable();
+            $table->string('address')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('profile_img')->nullable();
+            $table->string('position')->comment('Posting of use i.e UI/UX etc')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
