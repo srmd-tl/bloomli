@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function update(Request $request, User $user)
     {
-        $request->validate(['email'=>'required|email|unique:users,email']);
+        $request->validate(['email' => 'required|email|unique:users,email']);
         if (auth()->user()->can('update', $user->id)) {
             $payload = [
                 'first_name' => $request->first_name ?? $user->first_name,
@@ -28,4 +28,10 @@ class UserController extends Controller
 
 
     }
+
+    public function profile()
+    {
+        return view('user.profile');
+    }
+
 }
