@@ -14,7 +14,7 @@
                     <p>Are your sure want to Logout?</p>
                     <div class="modal-btn-bind">
                         <button class="btn-more btn-border">Cancel</button>
-                        <button class="btn-more">Ok</button>
+                        <a href={{route('auth.logout')}} class="btn-more">Ok</a>
                     </div>
                 </div>
             </div>
