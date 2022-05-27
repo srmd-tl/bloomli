@@ -31,7 +31,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
-});
+})->name('auth.google');
 
 Route::get('/callback', function () {
     $googleUser =  Socialite::driver('google')->stateless()->user();

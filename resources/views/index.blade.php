@@ -70,7 +70,7 @@
                                                 <p>Or Log in with</p>
                                                 <span></span>
                                             </div>
-                                            <button type="button" class="btn btn-google"><img src="assets/images/icons/google.png" alt="google" /> Google</button>
+                                            <a href="{{route('auth.google')}}" class="btn btn-google"><img src="assets/images/icons/google.png" alt="google" /> Google</a>
                                         </div>
                                     </form>
                                 </div>
