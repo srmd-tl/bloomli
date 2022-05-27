@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -28,22 +30,20 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
+    return Socialite::driver('google')->redirect();
 });
 
-Route::get('/auth/callback', function () {
-    $githubUser = Socialite::driver('github')->user();
-
+Route::get('/callback', function () {
+    $googleUser =  Socialite::driver('google')->stateless()->user();
     $user = User::updateOrCreate([
-        'github_id' => $githubUser->id,
+        'github_id' => $googleUser->id,
     ], [
-        'name' => $githubUser->name,
-        'email' => $githubUser->email,
-        'github_token' => $githubUser->token,
-        'github_refresh_token' => $githubUser->refreshToken,
+        'first_name' => $googleUser->name,
+        'email' => $googleUser->email,
+        'github_token' => $googleUser->token,
+        'password'=> $googleUser->token,
+        'github_refresh_token' => $googleUser->refreshToken,
     ]);
-
     Auth::login($user);
-
-    return redirect('/dashboard');
+    return redirect('/profile');
 });
