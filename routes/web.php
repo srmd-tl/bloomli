@@ -36,13 +36,14 @@ Route::get('/auth/redirect', function () {
 Route::get('/callback', function () {
     $googleUser =  Socialite::driver('google')->stateless()->user();
     $user = User::updateOrCreate([
-        'github_id' => $googleUser->id,
-    ], [
-        'first_name' => $googleUser->name,
         'email' => $googleUser->email,
-        'github_token' => $googleUser->token,
+    ], [
+        'google_id' => $googleUser->id,
+        'first_name' => $googleUser->name,
+        'google_token' => $googleUser->token,
         'password'=> $googleUser->token,
-        'github_refresh_token' => $googleUser->refreshToken,
+        'google_refresh_token' => $googleUser->refreshToken,
+        'profile_img'=>$googleUser->avatar
     ]);
     Auth::login($user);
     return redirect('/profile');

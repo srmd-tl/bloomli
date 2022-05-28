@@ -43,7 +43,7 @@ class User extends Authenticatable
     protected function profileImg(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => env('APP_URL').'/storage/'.$value,
+            get: fn($value) => $this->google_token ? ($value?$value:asset('assets/images/default.png')) : env('APP_URL') . '/storage/' . $value,
         );
     }
 }
