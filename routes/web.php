@@ -35,7 +35,7 @@ Route::group(['prefix' => '/dashboard'], function () {
     Route::get('/tasks', fn () => view('dashboard.tasks', ['title' => 'Tasks']))->name('tasks');
     Route::get('/projects', fn () => view('dashboard.projects', ['title' => 'Projects']))->name('projects');
     Route::get('/team', fn () => view('dashboard.team', ['title' => 'Team']))->name('team');
-    Route::get('/books', fn () => view('dashboard.books', ['title' => 'Books']))->name('books');
+//    Route::get('/books', fn () => view('dashboard.books', ['title' => 'Books']))->name('books');
     Route::get('/quiz', fn () => view('dashboard.quiz', ['title' => 'My Quizzes',
 
         'data' => array('a' => 'a', 'b' => 'b','c' => 'c')

@@ -45,7 +45,7 @@
 			<div class="menu-wrapper">
 				<div role="tab" >
 					<h5 class="mb-0">
-						<a class="collapsed d-block" href="{{ route('books') }}">
+						<a class="collapsed d-block" href="{{ route('books.all') }}">
 							<img src="{{asset('assets/images/nav-icon5.png')}}">
 						Books  </a>
 					</h5>
