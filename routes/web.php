@@ -65,5 +65,17 @@ Route::get('/auth/redirect', function () {
 })->name('auth.google');
 
 Route::get('/callback', function () {
-
+    $googleUser =  Socialite::driver('google')->stateless()->user();
+    $user = User::updateOrCreate([
+        'email' => $googleUser->email,
+    ], [
+        'google_id' => $googleUser->id,
+        'first_name' => $googleUser->name,
+        'google_token' => $googleUser->token,
+        'password'=> $googleUser->token,
+        'google_refresh_token' => $googleUser->refreshToken,
+        'profile_img'=>$googleUser->avatar
+    ]);
+    Auth::login($user);
+    return redirect('/profile');
 });
