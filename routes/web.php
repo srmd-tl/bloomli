@@ -36,7 +36,10 @@ Route::group(['prefix' => '/dashboard'], function () {
     Route::get('/projects', fn () => view('dashboard.projects', ['title' => 'Projects']))->name('projects');
     Route::get('/team', fn () => view('dashboard.team', ['title' => 'Team']))->name('team');
     Route::get('/books', fn () => view('dashboard.books', ['title' => 'Books']))->name('books');
-    Route::get('/quiz', fn () => view('dashboard.quiz', ['title' => 'My Quizzes']))->name('quiz');
+    Route::get('/quiz', fn () => view('dashboard.quiz', ['title' => 'My Quizzes',
+
+        'data' => array('a' => 'a', 'b' => 'b','c' => 'c')
+]))->name('quiz');
     Route::get('/notes', fn () => view('dashboard.my_notes', ['title' => 'My Notes']))->name('notes');
     Route::get('/library', fn () => view('dashboard.library', ['title' => 'My Library']))->name('library');
     Route::get('/messages', fn () => view('dashboard.messages', ['title' => 'Messages']))->name('messages');
