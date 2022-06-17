@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Quiz;
@@ -9,6 +12,10 @@ use App\Models\QuizOption;
 
 class QuizController extends Controller
 {
+    public function clientIndex(): Factory|View|Application
+    {
+        return view('client_area.quiz.quiz-page');
+    }
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -46,7 +53,7 @@ class QuizController extends Controller
             $quiz->user_id = 1;
             $quiz->save();
 
-            if($request->option){ 
+            if($request->option){
                 foreach ($request->option as $value) {
                     $option = new QuizOption();
                     $option->quiz_id = $quiz->id;

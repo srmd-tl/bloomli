@@ -38,27 +38,27 @@
             <div class="custom-slider2 arrows-2">
                 @foreach($books as $book)
                     <div class="books-box-wrapper">
-                    <div class="books-box2">
-                        <div class="books-box-image">
-                            <img src="{{asset('assets/images/book-new7.png')}}">
-                        </div>
-                        <div class="books-box-title">
-                            <div> {{$book->title}}</div>
-                            <div class="reviews">
-                                <i class="fa fa-star star-onn"> </i>
-                                <i class="fa fa-star star-onn"> </i>
-                                <i class="fa fa-star star-onn"> </i>
-                                <i class="fa fa-star star-onn"> </i>
-                                <i class="fa fa-star star-off"> </i>
-                                <b class="col-black"> (46) </b>
+                        <div class="books-box2">
+                            <div class="books-box-image">
+                                <img src="{{asset('assets/images/book-new7.png')}}">
+                            </div>
+                            <div class="books-box-title">
+                                <div> {{$book->title}}</div>
+                                <div class="reviews">
+                                    <i class="fa fa-star star-onn"> </i>
+                                    <i class="fa fa-star star-onn"> </i>
+                                    <i class="fa fa-star star-onn"> </i>
+                                    <i class="fa fa-star star-onn"> </i>
+                                    <i class="fa fa-star star-off"> </i>
+                                    <b class="col-black"> (46) </b>
+                                </div>
+                            </div>
+                            <div class="books-box-desc">
+                                <h6> By John Ven </h6>
+                                <p> {{$book->description}} </p>
                             </div>
                         </div>
-                        <div class="books-box-desc">
-                            <h6> By John Ven </h6>
-                            <p> {{$book->description}} </p>
-                        </div>
                     </div>
-                </div>
                 @endforeach
 
             </div>
@@ -397,21 +397,22 @@
     <!-- Add Book Popup Starts Here -->
     <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <form action="{{route('book.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="modal-dialog" role="document" style="max-width: 520px;">
-            <div class="modal-content popup-wrapper">
-                <div class="popup-head text-center">
-                    <div class="add-group-name-field">
-                        <input class="field-style1" type="text" placeholder="TYPE BOOK TITLE" name="title" required>
-                    </div>
-                    <button type="button" class="close close-btn1" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
 
-                <div class="form-3">
-                    <form>
+        <div class="modal-dialog" role="document" style="max-width: 520px;">
+            <form action="{{route('book.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content popup-wrapper">
+                    <div class="popup-head text-center">
+                        <div class="add-group-name-field">
+                            <input class="field-style1" type="text" placeholder="TYPE BOOK TITLE" name="title" required>
+                        </div>
+                        <button type="button" class="close close-btn1" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="form-3">
+
                         <div class="block-element2">
 
                             <div class="block-element2">
@@ -456,13 +457,11 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
-
-
-            </div>
+            </form>
         </div>
-        </form>
     </div>
     <!-- Add Book Popup Ends Here -->
 
