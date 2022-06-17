@@ -54,7 +54,7 @@
 			<div class="menu-wrapper">
 				<div role="tab" >
 					<h5 class="mb-0">
-						<a class="collapsed d-block" href="{{ route('quiz') }}">
+						<a class="collapsed d-block" href="{{ route('quiz.all') }}">
 							<img src="{{asset('assets/images/quiz-icon.png')}}">
 						Quizzes  </a>
 					</h5>

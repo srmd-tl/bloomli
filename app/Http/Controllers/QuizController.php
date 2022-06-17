@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Quiz;
 use App\Models\QuizOption;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
+
     public function clientIndex(): Factory|View|Application
     {
         return view('client_area.quiz.quiz-page');
@@ -22,7 +24,21 @@ class QuizController extends Controller
         return view('client_area.quiz.gamify-nfq');
     }
 
-    public function create(Request $request)
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function index()
+    {
+        $data = ['quizzes' => Quiz::with('user')->get(), 'title' => 'My Quizzes'];
+        return view('dashboard.quiz', $data);
+    }
+
+    public
+    function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -45,7 +61,7 @@ class QuizController extends Controller
             $quiz->question = $request->question1;
             $quiz->hint = $request->hint ?? null;
             $quiz->quiz_type_id = 1;
-            $quiz->user_id = 1;
+            $quiz->user_id = Auth::id();
             $quiz->save();
 
             $option = new QuizOption();
@@ -55,7 +71,7 @@ class QuizController extends Controller
         } else {
             $quiz->question = $request->question2;
             $quiz->quiz_type_id = 2;
-            $quiz->user_id = 1;
+            $quiz->user_id = Auth::id();
             $quiz->save();
 
             if ($request->option) {

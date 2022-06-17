@@ -25,7 +25,7 @@
 	<div class="block-element">
 		<div class="block-element">
 			<div class="row">	
-				@foreach($data as $value)
+				@foreach($quizzes as $quiz)
 				<div class="col-md-6 col-lg-3 col-sm-6 col-12">
 					<div class="books-box-wrapper quiz-box quiz-featured">
 						<img class="featured-tag" src="{{asset('assets/images/featured-tag.png')}}">
@@ -34,7 +34,7 @@
 								<img src="{{asset('assets/images/book-new7.png')}}">
 							</div>
 							<div class="books-box-title">
-								<div> Twice Shy </div>
+								<div> {{$quiz->title}} </div>
 								<div class="reviews"> 
 									<i class="fa fa-star star-onn"> </i>   
 									<i class="fa fa-star star-onn"> </i>   
@@ -45,8 +45,8 @@
 								</div>
 							</div>
 							<div class="books-box-desc">
-								<h6> By John Ven </h6>
-								<p> Spent lounging on the beach, madly in love friend </p>
+								<h6> By {{$quiz->user->first_name ?? ""}} {{$quiz->user->last_name ?? ""}}</h6>
+								<p>{{$quiz->question ?? ""}}</p>
 								<a data-toggle="modal" data-target="#modal-1" class="edit-btn1"> Edit </a>
 							</div>
 						</div>
@@ -204,7 +204,7 @@
 		<div class="modal-dialog" role="document" style="max-width: 640px;">
 			<div class="modal-content popup-wrapper popup-wrapper2">
 				<div class="custom-tab1">
-					<form action="{{url('createQuiz')}}" method="post">
+					<form action="{{route('quiz.create')}}" method="post">
 						@csrf	
 						<div class="popup-head2 text-center">
 							<div class="add-group-name-field">
