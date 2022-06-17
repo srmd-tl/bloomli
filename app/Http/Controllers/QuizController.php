@@ -16,6 +16,12 @@ class QuizController extends Controller
     {
         return view('client_area.quiz.quiz-page');
     }
+
+    public function nfq()
+    {
+        return view('client_area.quiz.gamify-nfq');
+    }
+
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -35,7 +41,7 @@ class QuizController extends Controller
         $quiz = new Quiz();
         $quiz->title = $request->title;
 
-        if($request->quiz_type == "Q&A") {
+        if ($request->quiz_type == "Q&A") {
             $quiz->question = $request->question1;
             $quiz->hint = $request->hint ?? null;
             $quiz->quiz_type_id = 1;
@@ -46,14 +52,13 @@ class QuizController extends Controller
             $option->quiz_id = $quiz->id;
             $option->option = $request->answer1;
             $option->save();
-        }
-        else {
+        } else {
             $quiz->question = $request->question2;
             $quiz->quiz_type_id = 2;
             $quiz->user_id = 1;
             $quiz->save();
 
-            if($request->option){
+            if ($request->option) {
                 foreach ($request->option as $value) {
                     $option = new QuizOption();
                     $option->quiz_id = $quiz->id;
